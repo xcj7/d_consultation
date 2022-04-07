@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="dpconsultationModelStoreContainer" CdmEntityContainer="dpconsultationEntities">
+    <EntitySetMapping Name="bans">
+      <EntityTypeMapping TypeName="dpconsultationModel.ban">
+        <MappingFragment StoreEntitySet="ban">
+          <ScalarProperty Name="ban_id" ColumnName="ban_id" />
+          <ScalarProperty Name="ban_reason" ColumnName="ban_reason" />
+          <ScalarProperty Name="ban_duration" ColumnName="ban_duration" />
+          <ScalarProperty Name="ban_time" ColumnName="ban_time" />
+          <ScalarProperty Name="u_id" ColumnName="u_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="doctor_info">
+      <EntityTypeMapping TypeName="dpconsultationModel.doctor_info">
+        <MappingFragment StoreEntitySet="doctor_info">
+          <ScalarProperty Name="did" ColumnName="did" />
+          <ScalarProperty Name="d_govid" ColumnName="d_govid" />
+          <ScalarProperty Name="d_degree" ColumnName="d_degree" />
+          <ScalarProperty Name="d_speciality" ColumnName="d_speciality" />
+          <ScalarProperty Name="u_id" ColumnName="u_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="users">
+      <EntityTypeMapping TypeName="dpconsultationModel.user">
+        <MappingFragment StoreEntitySet="user">
+          <ScalarProperty Name="u_id" ColumnName="u_id" />
+          <ScalarProperty Name="u_name" ColumnName="u_name" />
+          <ScalarProperty Name="u_password" ColumnName="u_password" />
+          <ScalarProperty Name="u_username" ColumnName="u_username" />
+          <ScalarProperty Name="u_address" ColumnName="u_address" />
+          <ScalarProperty Name="u_phone" ColumnName="u_phone" />
+          <ScalarProperty Name="u_email" ColumnName="u_email" />
+          <ScalarProperty Name="u_nid" ColumnName="u_nid" />
+          <ScalarProperty Name="u_category" ColumnName="u_category" />
+          <ScalarProperty Name="u_status" ColumnName="u_status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
