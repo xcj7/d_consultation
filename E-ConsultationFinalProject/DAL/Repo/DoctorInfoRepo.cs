@@ -24,18 +24,21 @@ namespace DAL.Repo
             throw new NotImplementedException();
         }
 
-        public bool Edit(doctor_info obj)
+        public bool Edit(doctor_info dr)
         {
-            var dr = db.doctor_info.FirstOrDefault(x => x.did == obj.did);
-            doctor_info dinfo = new doctor_info()
-            {
-                d_govid = dr.d_govid,
-                d_degree = dr.d_degree,
-                d_speciality = dr.d_speciality,
-                u_id = dr.u_id
-                
+            var d = db.doctor_info.FirstOrDefault(x => x.did == dr.did);
+            
+            d.d_govid = dr.d_govid;
+            d.d_degree = dr.d_degree;
+            d.d_speciality = dr.d_speciality;
+            d.did = dr.did;
 
-            };
+
+            if (db.SaveChanges() != 0)
+            {
+                return true;
+            }
+            return false;
         }
 
         public doctor_info Get(int id)
