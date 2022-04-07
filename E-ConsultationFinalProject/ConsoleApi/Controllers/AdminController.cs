@@ -9,7 +9,7 @@ using System.Web.Http;
 
 namespace ConsoleApi.Controllers
 {
-    public class UserController : ApiController
+    public class AdminController : ApiController
     {
         [Route("api/user/Get")]
         public HttpResponseMessage Get()
@@ -21,12 +21,18 @@ namespace ConsoleApi.Controllers
             }
             return Request.CreateResponse(HttpStatusCode.OK, "User Empty");
         }
-        [Route("api/user/Get")]
+        [Route("api/user/Add")]
         [HttpPost]
         public HttpResponseMessage Add(userModel u)
         {
             AllUserService.Add(u);
             return Request.CreateResponse("User Successsfully Added");
+        }
+        [Route("api/user/GetDoctor")]
+        public HttpResponseMessage GetDoctor()
+        {
+            var data = DoctorInfoService.Get();
+            return Request.CreateResponse(HttpStatusCode.OK, data);
         }
     }
 }

@@ -15,5 +15,9 @@ namespace DAL
         {
             return new AllUserRepo(db);
         }
+        public static IRepository<doctor_info,int> DoctorInfoDataAccess()
+        {
+            return new DoctorInfoRepo(db);
+        }
     }
 }

@@ -76,6 +76,7 @@
     <Compile Include="IRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repo\AllUserRepo.cs" />
+    <Compile Include="Repo\DoctorInfoRepo.cs" />
   </ItemGroup>
   <ItemGroup>
     <EntityDeploy Include="Database\Model1.edmx">
