@@ -53,5 +53,34 @@ namespace ConsoleApi.Controllers
             return Request.CreateResponse("User Empty");
         }
 
+        [Route("api/Admin/UStatusChange/{id}")]
+        [HttpPost]
+        public HttpResponseMessage UStatusChange(userModel u, int id)
+        {
+            AllUserService.EditUserStatus(u, id);
+            return Request.CreateResponse("Successfuly Status Changed");
+        }
+        [Route("api/Admin/SearchUser")]
+        [HttpPost]
+        public HttpResponseMessage SearchUser(userModel model)
+        {
+           var data =  AllUserService.SearchUser(model);
+            return Request.CreateResponse(HttpStatusCode.OK, data);
+        }
+
+        [Route("api/Admin/GetBanRequest")]
+      
+        public HttpResponseMessage GetBanRequest()
+        {
+            var data = BanService.Get();
+            return Request.CreateResponse(HttpStatusCode.OK, data);
+        }
+        [Route("api/Admin/GetPatientConsultation")]
+        public HttpResponseMessage GetPatientConsultation()
+        {
+            var data = PatientService.Get();
+            return Request.CreateResponse(HttpStatusCode.OK, data);
+        }
+
     }
 }

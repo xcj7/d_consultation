@@ -19,5 +19,17 @@ namespace DAL
         {
             return new DoctorInfoRepo(db);
         }
+        public static IRepository<ban,int> BanDataAccess()
+        {
+            return new BanRepo(db);
+        }
+        public static IRepository<patient,int> PatientDataAccess()
+        {
+            return new PatientRepo(db);
+        }
+        public static IRepository<doctor_schedule,int> DoctorSheduleDataAccess()
+        {
+            return new Doctor_scheduleRepo(db);
+        }
     }
 }

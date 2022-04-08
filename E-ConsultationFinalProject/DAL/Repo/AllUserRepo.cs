@@ -32,7 +32,13 @@ namespace DAL.Repo
 
         public bool Edit(user obj)
         {
-            throw new NotImplementedException();
+            var user = db.users.FirstOrDefault(x => x.u_id == obj.u_id);
+            user.u_status = obj.u_status;
+            if (db.SaveChanges() != 0)
+            {
+                return true;
+            }
+            return false;
         }
 
         public user Get(int id)

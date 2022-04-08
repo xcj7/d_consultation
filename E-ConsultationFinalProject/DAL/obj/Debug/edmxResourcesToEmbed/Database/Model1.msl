@@ -39,5 +39,49 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="doc_appoinment">
+      <EntityTypeMapping TypeName="dpconsultationModel.doc_appoinment">
+        <MappingFragment StoreEntitySet="doc_appoinment">
+          <ScalarProperty Name="schedule_id" ColumnName="schedule_id" />
+          <ScalarProperty Name="app_status" ColumnName="app_status" />
+          <ScalarProperty Name="app_fee" ColumnName="app_fee" />
+          <ScalarProperty Name="app_id" ColumnName="app_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="doctor_schedule">
+      <EntityTypeMapping TypeName="dpconsultationModel.doctor_schedule">
+        <MappingFragment StoreEntitySet="doctor_schedule">
+          <ScalarProperty Name="did" ColumnName="did" />
+          <ScalarProperty Name="schedule_ending_time" ColumnName="schedule_ending_time" />
+          <ScalarProperty Name="schedule_starting_time" ColumnName="schedule_starting_time" />
+          <ScalarProperty Name="schedule_day" ColumnName="schedule_day" />
+          <ScalarProperty Name="schedule_id" ColumnName="schedule_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="patients">
+      <EntityTypeMapping TypeName="dpconsultationModel.patient">
+        <MappingFragment StoreEntitySet="patient">
+          <ScalarProperty Name="app_id" ColumnName="app_id" />
+          <ScalarProperty Name="u_id" ColumnName="u_id" />
+          <ScalarProperty Name="p_diagnostics_info" ColumnName="p_diagnostics_info" />
+          <ScalarProperty Name="p_sickness_reason" ColumnName="p_sickness_reason" />
+          <ScalarProperty Name="p_id" ColumnName="p_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="prescriptions">
+      <EntityTypeMapping TypeName="dpconsultationModel.prescription">
+        <MappingFragment StoreEntitySet="prescription">
+          <ScalarProperty Name="u_id" ColumnName="u_id" />
+          <ScalarProperty Name="did" ColumnName="did" />
+          <ScalarProperty Name="pres_advice" ColumnName="pres_advice" />
+          <ScalarProperty Name="pres_test" ColumnName="pres_test" />
+          <ScalarProperty Name="pres_medicine" ColumnName="pres_medicine" />
+          <ScalarProperty Name="pres_id" ColumnName="pres_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>
