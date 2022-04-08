@@ -53,6 +53,23 @@ namespace BLL.Services
         {
             user data = new user()
             {
+                u_name = u.u_name,
+                u_username = u.u_username,
+                u_password = u.u_password,
+                u_address = u.u_address,
+                u_email = u.u_email,
+                u_phone = u.u_phone,
+                u_nid = u.u_nid,
+                u_category = u.u_category,
+                u_status = u.u_status,
+                u_id = id
+            };
+            DataAccessFactory.AllUserDataAccess().Edit(data);
+        }
+        public static void EditUser(userModel u, int id)
+        {
+            user data = new user()
+            {
                 u_status = u.u_status,
                 u_id = id
             };
@@ -81,5 +98,10 @@ namespace BLL.Services
             }
             return data;
         }
+        public static void DeleteUser(int id)
+        {
+            DataAccessFactory.AllUserDataAccess().Delete(id);
+        }
+
     }
 }

@@ -27,7 +27,13 @@ namespace DAL.Repo
 
         public bool Delete(int id)
         {
-            throw new NotImplementedException();
+            var user = db.users.FirstOrDefault(x => x.u_id == id);
+            db.users.Remove(user);
+           if (db.SaveChanges()!=0)
+            {
+                return true;
+            }
+            return false;
         }
 
         public bool Edit(user obj)

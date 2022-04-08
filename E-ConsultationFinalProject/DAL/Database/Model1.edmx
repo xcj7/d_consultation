@@ -79,6 +79,7 @@
           <Property Name="u_nid" Type="int" />
           <Property Name="u_category" Type="varchar" MaxLength="50" />
           <Property Name="u_status" Type="varchar" MaxLength="50" />
+          <Property Name="isdeleted" Type="int" />
         </EntityType>
         <Association Name="FK_ban_ban">
           <End Role="user" Type="Self.user" Multiplicity="0..1" />
@@ -263,6 +264,7 @@
           <NavigationProperty Name="doctor_info" Relationship="Self.FK_doctor_info_user" FromRole="user" ToRole="doctor_info" />
           <NavigationProperty Name="patients" Relationship="dpconsultationModel.FK_Patient_user" FromRole="user" ToRole="patient" />
           <NavigationProperty Name="prescriptions" Relationship="dpconsultationModel.FK_prescribtion_user" FromRole="user" ToRole="prescription" />
+          <Property Name="isdeleted" Type="Int32" />
         </EntityType>
         <Association Name="FK_ban_ban">
           <End Role="user" Type="Self.user" Multiplicity="0..1" />
@@ -480,6 +482,7 @@
           <EntitySetMapping Name="users">
             <EntityTypeMapping TypeName="dpconsultationModel.user">
               <MappingFragment StoreEntitySet="user">
+                <ScalarProperty Name="isdeleted" ColumnName="isdeleted" />
                 <ScalarProperty Name="u_id" ColumnName="u_id" />
                 <ScalarProperty Name="u_name" ColumnName="u_name" />
                 <ScalarProperty Name="u_password" ColumnName="u_password" />

@@ -60,6 +60,14 @@ namespace ConsoleApi.Controllers
             AllUserService.EditUserStatus(u, id);
             return Request.CreateResponse("Successfuly Status Changed");
         }
+        [Route("api/Admin/EditUser/{id}")]
+        [HttpPost]
+        public HttpResponseMessage EditUser(userModel u, int id)
+        {
+            AllUserService.EditUser(u, id);
+            return Request.CreateResponse("Successfuly Status Changed");
+        }
+
         [Route("api/Admin/SearchUser")]
         [HttpPost]
         public HttpResponseMessage SearchUser(userModel model)
@@ -75,12 +83,15 @@ namespace ConsoleApi.Controllers
             var data = BanService.Get();
             return Request.CreateResponse(HttpStatusCode.OK, data);
         }
-        [Route("api/Admin/GetPatientConsultation")]
-        public HttpResponseMessage GetPatientConsultation()
+
+        [Route("api/Admin/DeleteUser/{id}")]
+        [HttpPost]
+        public HttpResponseMessage DeleteUser(int id)
         {
-            var data = PatientService.Get();
-            return Request.CreateResponse(HttpStatusCode.OK, data);
+            AllUserService.DeleteUser(id);
+            return Request.CreateResponse("Successfuly User Deleted");
         }
+
 
     }
 }
