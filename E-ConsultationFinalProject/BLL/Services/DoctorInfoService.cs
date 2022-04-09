@@ -15,7 +15,7 @@ namespace BLL.Services
         {
             List<DoctorInfoModel> data = new List<DoctorInfoModel>();
            
-            var doctor = DataAccessFactory.DoctorInfoDataAccess().Get();
+            var doctor = DataAccessFactory.DoctorInfoDataAccess().Get().Where(x=>x.isdeleted == 0);
            
             foreach (var u in doctor)
             {
@@ -49,7 +49,7 @@ namespace BLL.Services
                 d_govid = u.d_govid,
                 d_degree = u.d_degree,
                 d_speciality = u.d_speciality,
-                u_id = u.u_id,
+
                 did = id
 
             };
@@ -59,7 +59,7 @@ namespace BLL.Services
         public static List<DoctorInfoModel> GetRequestedDoctor()
         {
             List<DoctorInfoModel> data = new List<DoctorInfoModel>();
-            var user = DataAccessFactory.DoctorInfoDataAccess().Get().Where(x=>x.user.u_status=="Pending" || x.user.u_status == "Requested");
+            var user = DataAccessFactory.DoctorInfoDataAccess().Get().Where(x=>x.isdeleted == 0 && (x.user.u_status == "Pending" || x.user.u_status == "Requested"));
             foreach (var u in user)
             {
                 data.Add(new DoctorInfoModel()

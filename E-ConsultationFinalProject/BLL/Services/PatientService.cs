@@ -1,5 +1,6 @@
 ﻿using BLL.Entity;
 using DAL;
+using DAL.Database;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,7 +14,7 @@ namespace BLL.Services
         public static List<PatientModel> Get()
         {
             List<PatientModel> data = new List<PatientModel>();
-            var p = DataAccessFactory.PatientDataAccess().Get();
+            var p = DataAccessFactory.PatientDataAccess().Get().Where(x=>x.isdeleted == 0);
             foreach(var u in p)
             {
                 data.Add(new PatientModel()
@@ -70,5 +71,15 @@ namespace BLL.Services
             return data;
 
         }
+        public static void DeletePatientCon(int id)
+        {
+            patient p = new patient()
+            {
+                isdeleted = 1,
+               p_id = id
+            };
+            DataAccessFactory.PatientDataAccess().EditDelete(p);
+        }
+        
     }
 }

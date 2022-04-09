@@ -25,6 +25,7 @@ namespace DAL.Database
         public string d_degree { get; set; }
         public string d_speciality { get; set; }
         public Nullable<int> u_id { get; set; }
+        public Nullable<int> isdeleted { get; set; }
     
         public virtual user user { get; set; }
         public virtual ICollection<doctor_schedule> doctor_schedule { get; set; }

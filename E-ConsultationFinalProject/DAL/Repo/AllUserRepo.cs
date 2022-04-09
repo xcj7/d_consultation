@@ -39,7 +39,14 @@ namespace DAL.Repo
         public bool Edit(user obj)
         {
             var user = db.users.FirstOrDefault(x => x.u_id == obj.u_id);
-            user.u_status = obj.u_status;
+            user.u_name = obj.u_name;
+            user.u_username = obj.u_username;
+            user.u_phone = obj.u_phone;
+            user.u_email = obj.u_email;
+            user.u_password = obj.u_password;
+            user.u_nid = obj.u_nid;
+            user.u_address = obj.u_address;
+
             if (db.SaveChanges() != 0)
             {
                 return true;
@@ -54,7 +61,28 @@ namespace DAL.Repo
 
         public List<user> Get()
         {
-            return db.users.ToList();
+            return db.users.Where(x=>x.u_category != "Admin").ToList();
+        }
+        public bool EditStatus(user obj)
+        {
+            var user = db.users.FirstOrDefault(x => x.u_id == obj.u_id);
+            user.u_status = obj.u_status;
+            if (db.SaveChanges() != 0)
+            {
+                return true;
+            }
+            return false;
+        }
+
+        public bool EditDelete(user obj)
+        {
+            var user = db.users.FirstOrDefault(x => x.u_id == obj.u_id);
+            user.isdeleted = obj.isdeleted;
+            if (db.SaveChanges() != 0)
+            {
+                return true;
+            }
+            return false;
         }
     }
 }

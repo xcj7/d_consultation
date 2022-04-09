@@ -15,6 +15,7 @@
     <EntitySetMapping Name="doctor_info">
       <EntityTypeMapping TypeName="dpconsultationModel.doctor_info">
         <MappingFragment StoreEntitySet="doctor_info">
+          <ScalarProperty Name="isdeleted" ColumnName="isdeleted" />
           <ScalarProperty Name="did" ColumnName="did" />
           <ScalarProperty Name="d_govid" ColumnName="d_govid" />
           <ScalarProperty Name="d_degree" ColumnName="d_degree" />
@@ -26,6 +27,7 @@
     <EntitySetMapping Name="users">
       <EntityTypeMapping TypeName="dpconsultationModel.user">
         <MappingFragment StoreEntitySet="user">
+          <ScalarProperty Name="isdeleted" ColumnName="isdeleted" />
           <ScalarProperty Name="u_id" ColumnName="u_id" />
           <ScalarProperty Name="u_name" ColumnName="u_name" />
           <ScalarProperty Name="u_password" ColumnName="u_password" />
@@ -63,6 +65,7 @@
     <EntitySetMapping Name="patients">
       <EntityTypeMapping TypeName="dpconsultationModel.patient">
         <MappingFragment StoreEntitySet="patient">
+          <ScalarProperty Name="isdeleted" ColumnName="isdeleted" />
           <ScalarProperty Name="app_id" ColumnName="app_id" />
           <ScalarProperty Name="u_id" ColumnName="u_id" />
           <ScalarProperty Name="p_diagnostics_info" ColumnName="p_diagnostics_info" />

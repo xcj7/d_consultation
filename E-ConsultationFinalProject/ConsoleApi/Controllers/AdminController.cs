@@ -32,6 +32,7 @@ namespace ConsoleApi.Controllers
         public HttpResponseMessage GetDoctor()
         {
             var data = DoctorInfoService.Get();
+            
             return Request.CreateResponse(HttpStatusCode.OK, data);
         }
         [Route("api/Admin/EditDoctor/{id}")]
@@ -53,21 +54,6 @@ namespace ConsoleApi.Controllers
             return Request.CreateResponse("User Empty");
         }
 
-        [Route("api/Admin/UStatusChange/{id}")]
-        [HttpPost]
-        public HttpResponseMessage UStatusChange(userModel u, int id)
-        {
-            AllUserService.EditUserStatus(u, id);
-            return Request.CreateResponse("Successfuly Status Changed");
-        }
-        [Route("api/Admin/EditUser/{id}")]
-        [HttpPost]
-        public HttpResponseMessage EditUser(userModel u, int id)
-        {
-            AllUserService.EditUser(u, id);
-            return Request.CreateResponse("Successfuly Status Changed");
-        }
-
         [Route("api/Admin/SearchUser")]
         [HttpPost]
         public HttpResponseMessage SearchUser(userModel model)
@@ -84,14 +70,46 @@ namespace ConsoleApi.Controllers
             return Request.CreateResponse(HttpStatusCode.OK, data);
         }
 
+        [Route("api/Admin/EditUser/{id}")]
+        [HttpPost]
+        public HttpResponseMessage EditUser(userModel u, int id)
+        {
+            AllUserService.EditUser(u, id);
+            return Request.CreateResponse("Successfuly Status Changed");
+        }
+
         [Route("api/Admin/DeleteUser/{id}")]
         [HttpPost]
         public HttpResponseMessage DeleteUser(int id)
         {
-            AllUserService.DeleteUser(id);
+            AllUserService.EditDelete(id);
             return Request.CreateResponse("Successfuly User Deleted");
         }
 
+        [Route("api/Admin/UStatusChange/{id}")]
+        [HttpPost]
+        public HttpResponseMessage UStatusChange(userModel u, int id)
+        {
+            AllUserService.EditUserStatus(u, id);
+            return Request.CreateResponse("Successfuly Status Changed");
+        }
+
+        [Route("api/Admin/CheckConsultation")]
+        [HttpGet]
+        public HttpResponseMessage CheckConsultation()
+        {
+            var data = PatientService.Get();
+            return Request.CreateResponse(HttpStatusCode.OK, data);
+        }
+        [Route("api/Admin/DeleteConsultation/{id}")]
+        [HttpPost]
+        public HttpResponseMessage DeleteConsultation(int id)
+        {
+             PatientService.DeletePatientCon(id);
+
+            return Request.CreateResponse("Successfuly Consultation Removed");
+            
+        }
 
     }
 }

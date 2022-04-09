@@ -12,6 +12,8 @@ namespace DAL
         T Get(ID id);
         List<T> Get();
         bool Edit(T obj);
+        bool EditStatus(T obj);
+        bool EditDelete(T obj);
         bool Delete(ID id);
     }
 }

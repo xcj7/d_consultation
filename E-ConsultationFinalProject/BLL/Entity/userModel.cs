@@ -18,5 +18,6 @@ namespace BLL.Entity
         public Nullable<int> u_nid { get; set; }
         public string u_category { get; set; }
         public string u_status { get; set; }
+        public Nullable<int> isdeleted { get; set; }
     }
 }

@@ -33,5 +33,28 @@ namespace BLL.Services
             }
             return data;
         }
+
+        public static void Add(DoctorSheduleModel ds)
+        {
+            doctor_schedule data = new doctor_schedule()
+            {
+                schedule_day = ds.schedule_day,
+                schedule_starting_time = ds.schedule_starting_time,
+                schedule_ending_time = ds.schedule_ending_time
+            };
+            DataAccessFactory.DoctorSheduleDataAccess().Add(data);
+        }
+        public static void EditUserStatus(DoctorSheduleModel ds, int id)
+        {
+            doctor_schedule data = new doctor_schedule()
+            {
+                schedule_day = ds.schedule_day,
+                schedule_starting_time = ds.schedule_starting_time,
+                schedule_ending_time = ds.schedule_ending_time,
+                schedule_id = id
+            };
+            DataAccessFactory.DoctorSheduleDataAccess().Edit(data);
+        }
+        
     }
 }

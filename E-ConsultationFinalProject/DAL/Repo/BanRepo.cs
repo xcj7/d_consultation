@@ -29,6 +29,16 @@ namespace DAL.Repo
             throw new NotImplementedException();
         }
 
+        public bool EditDelete(ban obj)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool EditStatus(ban obj)
+        {
+            throw new NotImplementedException();
+        }
+
         public ban Get(int id)
         {
             throw new NotImplementedException();

@@ -32,6 +32,22 @@ namespace DAL.Repo
 
         public bool Edit(doctor_schedule obj)
         {
+
+            var ds = db.doctor_schedule.FirstOrDefault(x => x.schedule_id == obj.schedule_id);
+            if (db.SaveChanges() != 0)
+            {
+                return true;
+            }
+            return false;
+        }
+
+        public bool EditDelete(doctor_schedule obj)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool EditStatus(doctor_schedule obj)
+        {
             throw new NotImplementedException();
         }
 

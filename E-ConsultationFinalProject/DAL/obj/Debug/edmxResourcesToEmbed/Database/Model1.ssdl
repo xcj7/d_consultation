@@ -28,6 +28,7 @@
     <Property Name="d_degree" Type="varchar" MaxLength="1200" />
     <Property Name="d_speciality" Type="varchar" MaxLength="500" />
     <Property Name="u_id" Type="int" />
+    <Property Name="isdeleted" Type="int" />
   </EntityType>
   <EntityType Name="doctor_schedule">
     <Key>
@@ -48,6 +49,7 @@
     <Property Name="p_diagnostics_info" Type="varchar" MaxLength="1500" />
     <Property Name="u_id" Type="int" Nullable="false" />
     <Property Name="app_id" Type="int" />
+    <Property Name="isdeleted" Type="int" />
   </EntityType>
   <EntityType Name="prescription">
     <Key>
@@ -74,6 +76,7 @@
     <Property Name="u_nid" Type="int" />
     <Property Name="u_category" Type="varchar" MaxLength="50" />
     <Property Name="u_status" Type="varchar" MaxLength="50" />
+    <Property Name="isdeleted" Type="int" />
   </EntityType>
   <Association Name="FK_ban_ban">
     <End Role="user" Type="Self.user" Multiplicity="0..1" />

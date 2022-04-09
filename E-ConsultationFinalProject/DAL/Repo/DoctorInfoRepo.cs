@@ -31,14 +31,23 @@ namespace DAL.Repo
             d.d_govid = dr.d_govid;
             d.d_degree = dr.d_degree;
             d.d_speciality = dr.d_speciality;
-            d.did = dr.did;
-
+           
 
             if (db.SaveChanges() != 0)
             {
                 return true;
             }
             return false;
+        }
+
+        public bool EditDelete(doctor_info obj)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool EditStatus(doctor_info obj)
+        {
+            throw new NotImplementedException();
         }
 
         public doctor_info Get(int id)

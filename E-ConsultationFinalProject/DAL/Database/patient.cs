@@ -19,6 +19,7 @@ namespace DAL.Database
         public string p_diagnostics_info { get; set; }
         public int u_id { get; set; }
         public Nullable<int> app_id { get; set; }
+        public Nullable<int> isdeleted { get; set; }
     
         public virtual doc_appoinment doc_appoinment { get; set; }
         public virtual user user { get; set; }
