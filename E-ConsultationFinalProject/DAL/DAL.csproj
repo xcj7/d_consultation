@@ -89,6 +89,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repo\AllUserRepo.cs" />
     <Compile Include="Repo\BanRepo.cs" />
+    <Compile Include="Repo\DoctorAppoinmentRepo.cs" />
     <Compile Include="Repo\DoctorInfoRepo.cs" />
     <Compile Include="Repo\Doctor_scheduleRepo.cs" />
     <Compile Include="Repo\PatientRepo.cs" />

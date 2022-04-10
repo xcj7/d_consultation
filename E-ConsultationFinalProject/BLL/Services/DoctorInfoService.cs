@@ -69,7 +69,7 @@ namespace BLL.Services
                     d_speciality = u.d_speciality,
                     user = new userModel()
                     {
-
+                        u_id = u.user.u_id,
                         u_name = u.user.u_name,
                         u_username = u.user.u_username,
                         u_password = u.user.u_password,
@@ -87,6 +87,8 @@ namespace BLL.Services
             return data;
 
         }
+
+       
 
     }
 }

@@ -23,6 +23,7 @@ namespace DAL.Database
         public Nullable<int> app_fee { get; set; }
         public string app_status { get; set; }
         public int schedule_id { get; set; }
+        public Nullable<int> isdeleted { get; set; }
     
         public virtual doctor_schedule doctor_schedule { get; set; }
         public virtual ICollection<patient> patients { get; set; }

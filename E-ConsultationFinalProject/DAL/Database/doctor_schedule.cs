@@ -24,6 +24,7 @@ namespace DAL.Database
         public Nullable<System.TimeSpan> schedule_starting_time { get; set; }
         public Nullable<System.TimeSpan> schedule_ending_time { get; set; }
         public Nullable<int> did { get; set; }
+        public Nullable<int> isdeleted { get; set; }
     
         public virtual ICollection<doc_appoinment> doc_appoinment { get; set; }
         public virtual doctor_info doctor_info { get; set; }

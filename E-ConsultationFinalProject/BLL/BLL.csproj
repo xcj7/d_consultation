@@ -51,6 +51,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\AllUserService.cs" />
     <Compile Include="Services\BanService.cs" />
+    <Compile Include="Services\DoctorAppoinmentService.cs" />
     <Compile Include="Services\DoctorInfoService.cs" />
     <Compile Include="Services\doctor_schedule_service.cs" />
     <Compile Include="Services\PatientService.cs" />

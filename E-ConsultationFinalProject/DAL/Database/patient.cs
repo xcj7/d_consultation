@@ -20,6 +20,7 @@ namespace DAL.Database
         public int u_id { get; set; }
         public Nullable<int> app_id { get; set; }
         public Nullable<int> isdeleted { get; set; }
+        public string status { get; set; }
     
         public virtual doc_appoinment doc_appoinment { get; set; }
         public virtual user user { get; set; }

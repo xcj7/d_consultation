@@ -55,6 +55,24 @@ namespace BLL.Services
             };
             DataAccessFactory.DoctorSheduleDataAccess().Edit(data);
         }
-        
+
+        public static List<DoctorSheduleModel> GetDoctorSheduleForPatient(int id)
+        {
+            var user = DataAccessFactory.DoctorSheduleDataAccess().Get().Where(x=>x.doctor_info.user.u_id == id);
+            List<DoctorSheduleModel> data = new List<DoctorSheduleModel>();
+            foreach (var u in user)
+            {
+                data.Add(new DoctorSheduleModel()
+                {
+                   schedule_id = u.schedule_id,
+                    schedule_day = u.schedule_day,
+                    schedule_starting_time = u.schedule_starting_time,
+                    schedule_ending_time = u.schedule_ending_time
+                });
+            }
+            return data;
+        }
+
+
     }
 }

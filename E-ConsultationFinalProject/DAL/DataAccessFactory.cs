@@ -31,5 +31,9 @@ namespace DAL
         {
             return new Doctor_scheduleRepo(db);
         }
+        public static IRepository<doc_appoinment,int> DoctorAppoinmentDataAccess()
+        {
+            return new DoctorAppoinmentRepo(db);
+        }
     }
 }

@@ -65,6 +65,7 @@
     <EntitySetMapping Name="patients">
       <EntityTypeMapping TypeName="dpconsultationModel.patient">
         <MappingFragment StoreEntitySet="patient">
+          <ScalarProperty Name="status" ColumnName="status" />
           <ScalarProperty Name="isdeleted" ColumnName="isdeleted" />
           <ScalarProperty Name="app_id" ColumnName="app_id" />
           <ScalarProperty Name="u_id" ColumnName="u_id" />

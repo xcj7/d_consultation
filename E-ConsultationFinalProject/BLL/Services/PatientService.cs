@@ -80,6 +80,18 @@ namespace BLL.Services
             };
             DataAccessFactory.PatientDataAccess().EditDelete(p);
         }
+        public static void Add(PatientModel model)
+        {
+            patient p = new patient() { 
+                p_sickness_reason = model.p_sickness_reason,
+                p_diagnostics_info = model.p_diagnostics_info,
+                u_id = model.u_id,
+                app_id = model.app_id,
+                isdeleted =0,
+                status ="Pending"
+            };
+            DataAccessFactory.PatientDataAccess().Add(p);
+        }
         
     }
 }

@@ -145,6 +145,7 @@
     <NavigationProperty Name="doc_appoinment" Relationship="dpconsultationModel.FK_Patient_doc_appoinment" FromRole="patient" ToRole="doc_appoinment" />
     <NavigationProperty Name="user" Relationship="dpconsultationModel.FK_Patient_user" FromRole="patient" ToRole="user" />
     <Property Name="isdeleted" Type="Int32" />
+    <Property Name="status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
   </EntityType>
   <Association Name="FK_doc_appoinment_doctor_schedule">
     <End Type="dpconsultationModel.doctor_schedule" Role="doctor_schedule" Multiplicity="1" />

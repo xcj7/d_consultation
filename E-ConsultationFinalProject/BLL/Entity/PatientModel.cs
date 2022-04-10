@@ -13,7 +13,7 @@ namespace BLL.Entity
         public string p_diagnostics_info { get; set; }
         public int u_id { get; set; }
         public Nullable<int> app_id { get; set; }
-
+        public string status { get; set; }
         public virtual DoctorAppoinmentModel doc_appoinment { get; set; }
         public virtual userModel user { get; set; }
     }

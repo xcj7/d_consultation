@@ -50,16 +50,17 @@
     <Property Name="u_id" Type="int" Nullable="false" />
     <Property Name="app_id" Type="int" />
     <Property Name="isdeleted" Type="int" />
+    <Property Name="status" Type="varchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="prescription">
     <Key>
       <PropertyRef Name="pres_id" />
     </Key>
-    <Property Name="pres_id" Type="int" Nullable="false" />
+    <Property Name="pres_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="pres_medicine" Type="varchar" MaxLength="500" />
     <Property Name="pres_test" Type="varchar" MaxLength="600" />
     <Property Name="pres_advice" Type="varchar" MaxLength="300" />
-    <Property Name="did" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="did" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
     <Property Name="u_id" Type="int" />
   </EntityType>
   <EntityType Name="user">

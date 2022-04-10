@@ -23,6 +23,7 @@
           <Property Name="app_fee" Type="int" />
           <Property Name="app_status" Type="varchar" MaxLength="50" />
           <Property Name="schedule_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="isdeleted" Type="int" />
         </EntityType>
         <EntityType Name="doctor_info">
           <Key>
@@ -44,6 +45,7 @@
           <Property Name="schedule_starting_time" Type="time" Precision="7" />
           <Property Name="schedule_ending_time" Type="time" Precision="7" />
           <Property Name="did" Type="int" />
+          <Property Name="isdeleted" Type="int" />
         </EntityType>
         <EntityType Name="patient">
           <Key>
@@ -55,16 +57,17 @@
           <Property Name="u_id" Type="int" Nullable="false" />
           <Property Name="app_id" Type="int" />
           <Property Name="isdeleted" Type="int" />
+          <Property Name="status" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="prescription">
           <Key>
             <PropertyRef Name="pres_id" />
           </Key>
-          <Property Name="pres_id" Type="int" Nullable="false" />
+          <Property Name="pres_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="pres_medicine" Type="varchar" MaxLength="500" />
           <Property Name="pres_test" Type="varchar" MaxLength="600" />
           <Property Name="pres_advice" Type="varchar" MaxLength="300" />
-          <Property Name="did" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="did" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="u_id" Type="int" />
         </EntityType>
         <EntityType Name="user">
@@ -344,6 +347,7 @@
           <Property Name="schedule_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <NavigationProperty Name="doctor_schedule" Relationship="dpconsultationModel.FK_doc_appoinment_doctor_schedule" FromRole="doc_appoinment" ToRole="doctor_schedule" />
           <NavigationProperty Name="patients" Relationship="dpconsultationModel.FK_Patient_doc_appoinment" FromRole="doc_appoinment" ToRole="patient" />
+          <Property Name="isdeleted" Type="Int32" />
         </EntityType>
         <EntityType Name="doctor_schedule">
           <Key>
@@ -356,6 +360,7 @@
           <Property Name="did" Type="Int32" />
           <NavigationProperty Name="doc_appoinment" Relationship="dpconsultationModel.FK_doc_appoinment_doctor_schedule" FromRole="doctor_schedule" ToRole="doc_appoinment" />
           <NavigationProperty Name="doctor_info" Relationship="dpconsultationModel.FK_doctor_schedule_doctor_info" FromRole="doctor_schedule" ToRole="doctor_info" />
+          <Property Name="isdeleted" Type="Int32" />
         </EntityType>
         <EntityType Name="patient">
           <Key>
@@ -369,6 +374,7 @@
           <NavigationProperty Name="doc_appoinment" Relationship="dpconsultationModel.FK_Patient_doc_appoinment" FromRole="patient" ToRole="doc_appoinment" />
           <NavigationProperty Name="user" Relationship="dpconsultationModel.FK_Patient_user" FromRole="patient" ToRole="user" />
           <Property Name="isdeleted" Type="Int32" />
+          <Property Name="status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <Association Name="FK_doc_appoinment_doctor_schedule">
           <End Type="dpconsultationModel.doctor_schedule" Role="doctor_schedule" Multiplicity="1" />
@@ -504,6 +510,7 @@
           <EntitySetMapping Name="doc_appoinment">
             <EntityTypeMapping TypeName="dpconsultationModel.doc_appoinment">
               <MappingFragment StoreEntitySet="doc_appoinment">
+                <ScalarProperty Name="isdeleted" ColumnName="isdeleted" />
                 <ScalarProperty Name="schedule_id" ColumnName="schedule_id" />
                 <ScalarProperty Name="app_status" ColumnName="app_status" />
                 <ScalarProperty Name="app_fee" ColumnName="app_fee" />
@@ -514,6 +521,7 @@
           <EntitySetMapping Name="doctor_schedule">
             <EntityTypeMapping TypeName="dpconsultationModel.doctor_schedule">
               <MappingFragment StoreEntitySet="doctor_schedule">
+                <ScalarProperty Name="isdeleted" ColumnName="isdeleted" />
                 <ScalarProperty Name="did" ColumnName="did" />
                 <ScalarProperty Name="schedule_ending_time" ColumnName="schedule_ending_time" />
                 <ScalarProperty Name="schedule_starting_time" ColumnName="schedule_starting_time" />
@@ -525,6 +533,7 @@
           <EntitySetMapping Name="patients">
             <EntityTypeMapping TypeName="dpconsultationModel.patient">
               <MappingFragment StoreEntitySet="patient">
+                <ScalarProperty Name="status" ColumnName="status" />
                 <ScalarProperty Name="isdeleted" ColumnName="isdeleted" />
                 <ScalarProperty Name="app_id" ColumnName="app_id" />
                 <ScalarProperty Name="u_id" ColumnName="u_id" />
