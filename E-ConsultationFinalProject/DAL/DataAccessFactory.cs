@@ -35,5 +35,13 @@ namespace DAL
         {
             return new DoctorAppoinmentRepo(db);
         }
+        public static IRepository<prescription,int> PrescriptionDataAccess()
+        {
+            return new PrescriptionRepo(db);
+        }
+        public static IRepository<patient, int> ConsultationDataAccess()
+        {
+            return new ConsultationRepo(db);
+        }
     }
 }

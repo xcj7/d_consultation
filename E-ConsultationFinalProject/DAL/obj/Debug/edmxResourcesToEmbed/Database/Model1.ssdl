@@ -18,6 +18,7 @@
     <Property Name="app_fee" Type="int" />
     <Property Name="app_status" Type="varchar" MaxLength="50" />
     <Property Name="schedule_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="isdeleted" Type="int" />
   </EntityType>
   <EntityType Name="doctor_info">
     <Key>
@@ -39,6 +40,7 @@
     <Property Name="schedule_starting_time" Type="time" Precision="7" />
     <Property Name="schedule_ending_time" Type="time" Precision="7" />
     <Property Name="did" Type="int" />
+    <Property Name="isdeleted" Type="int" />
   </EntityType>
   <EntityType Name="patient">
     <Key>
@@ -60,7 +62,7 @@
     <Property Name="pres_medicine" Type="varchar" MaxLength="500" />
     <Property Name="pres_test" Type="varchar" MaxLength="600" />
     <Property Name="pres_advice" Type="varchar" MaxLength="300" />
-    <Property Name="did" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="p_id" Type="int" Nullable="false" />
     <Property Name="u_id" Type="int" />
   </EntityType>
   <EntityType Name="user">
@@ -151,18 +153,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_prescribtion_doctor_info">
-    <End Role="doctor_info" Type="Self.doctor_info" Multiplicity="1" />
-    <End Role="prescription" Type="Self.prescription" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="doctor_info">
-        <PropertyRef Name="did" />
-      </Principal>
-      <Dependent Role="prescription">
-        <PropertyRef Name="did" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_prescribtion_user">
     <End Role="user" Type="Self.user" Multiplicity="0..1" />
     <End Role="prescription" Type="Self.prescription" Multiplicity="*" />
@@ -172,6 +162,18 @@
       </Principal>
       <Dependent Role="prescription">
         <PropertyRef Name="u_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_prescription_patient">
+    <End Role="patient" Type="Self.patient" Multiplicity="1" />
+    <End Role="prescription" Type="Self.prescription" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="patient">
+        <PropertyRef Name="p_id" />
+      </Principal>
+      <Dependent Role="prescription">
+        <PropertyRef Name="p_id" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -207,12 +209,12 @@
       <End Role="user" EntitySet="user" />
       <End Role="patient" EntitySet="patient" />
     </AssociationSet>
-    <AssociationSet Name="FK_prescribtion_doctor_info" Association="Self.FK_prescribtion_doctor_info">
-      <End Role="doctor_info" EntitySet="doctor_info" />
-      <End Role="prescription" EntitySet="prescription" />
-    </AssociationSet>
     <AssociationSet Name="FK_prescribtion_user" Association="Self.FK_prescribtion_user">
       <End Role="user" EntitySet="user" />
+      <End Role="prescription" EntitySet="prescription" />
+    </AssociationSet>
+    <AssociationSet Name="FK_prescription_patient" Association="Self.FK_prescription_patient">
+      <End Role="patient" EntitySet="patient" />
       <End Role="prescription" EntitySet="prescription" />
     </AssociationSet>
   </EntityContainer>

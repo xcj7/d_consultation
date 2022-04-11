@@ -18,10 +18,10 @@ namespace DAL.Database
         public string pres_medicine { get; set; }
         public string pres_test { get; set; }
         public string pres_advice { get; set; }
-        public int did { get; set; }
         public Nullable<int> u_id { get; set; }
+        public int p_id { get; set; }
     
-        public virtual doctor_info doctor_info { get; set; }
         public virtual user user { get; set; }
+        public virtual patient patient { get; set; }
     }
 }

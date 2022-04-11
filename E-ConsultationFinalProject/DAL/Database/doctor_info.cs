@@ -17,7 +17,6 @@ namespace DAL.Database
         public doctor_info()
         {
             this.doctor_schedule = new HashSet<doctor_schedule>();
-            this.prescriptions = new HashSet<prescription>();
         }
     
         public int did { get; set; }
@@ -29,6 +28,5 @@ namespace DAL.Database
     
         public virtual user user { get; set; }
         public virtual ICollection<doctor_schedule> doctor_schedule { get; set; }
-        public virtual ICollection<prescription> prescriptions { get; set; }
     }
 }

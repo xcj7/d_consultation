@@ -63,5 +63,26 @@ namespace ConsoleApi.Controllers
             return Request.CreateResponse("Successfuly Consultation Removed");
 
         }
+
+
+      /*  [Route("api/Patient/GetConsultation")]
+        [HttpGet]
+        public HttpResponseMessage GetConsultation()
+        {
+            var data = PatientService.Get();
+
+            return Request.CreateResponse(HttpStatusCode.OK, data);
+
+        }
+      */
+        [Route("api/Patient/GetPrescription/{id}")]
+        [HttpGet]
+        public HttpResponseMessage GetPrescription(int id)
+        {
+          var data=   PrescriptionService.GetPrescription(id);
+
+            return Request.CreateResponse(HttpStatusCode.OK, data);
+
+        }
     }
 }

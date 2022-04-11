@@ -43,18 +43,23 @@
   <ItemGroup>
     <Compile Include="Class1.cs" />
     <Compile Include="Entity\BanModel.cs" />
+    <Compile Include="Entity\ConsultationModel.cs" />
+    <Compile Include="Entity\Date_StatusModel.cs" />
     <Compile Include="Entity\DoctorAppoinmentModel.cs" />
     <Compile Include="Entity\DoctorInfoModel.cs" />
     <Compile Include="Entity\DoctorSheduleModel.cs" />
     <Compile Include="Entity\PatientModel.cs" />
+    <Compile Include="Entity\PrescriptionModel.cs" />
     <Compile Include="Entity\userModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\AllUserService.cs" />
     <Compile Include="Services\BanService.cs" />
+    <Compile Include="Services\ConsultationService.cs" />
     <Compile Include="Services\DoctorAppoinmentService.cs" />
     <Compile Include="Services\DoctorInfoService.cs" />
     <Compile Include="Services\doctor_schedule_service.cs" />
     <Compile Include="Services\PatientService.cs" />
+    <Compile Include="Services\PrescriptionService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DAL\DAL.csproj">

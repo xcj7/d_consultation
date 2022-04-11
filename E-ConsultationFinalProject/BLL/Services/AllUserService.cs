@@ -35,6 +35,15 @@ namespace BLL.Services
         }
         public static void Add(userModel u)
         {
+            if(u.u_category == "Supervisor" || u.u_category == "Patient")
+            {
+                u.u_status = "Active";
+            }
+            else if(u.u_category == "Doctor")
+            {
+                u.u_status = "Pending";
+            }
+           
             user data = new user()
             {
                 u_name = u.u_name,
@@ -46,7 +55,7 @@ namespace BLL.Services
                 u_nid = u.u_nid,
                 u_category = u.u_category,
                 u_status = u.u_status,
-                isdeleted = u.isdeleted
+                isdeleted = 0
                 
             };
             DataAccessFactory.AllUserDataAccess().Add(data);
@@ -62,6 +71,7 @@ namespace BLL.Services
                 u_email = u.u_email,
                 u_phone = u.u_phone,
                 u_nid = u.u_nid,
+                u_id = id
                
                 
                

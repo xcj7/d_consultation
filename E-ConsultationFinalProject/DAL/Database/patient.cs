@@ -14,6 +14,11 @@ namespace DAL.Database
     
     public partial class patient
     {
+        public patient()
+        {
+            this.prescriptions = new HashSet<prescription>();
+        }
+    
         public int p_id { get; set; }
         public string p_sickness_reason { get; set; }
         public string p_diagnostics_info { get; set; }
@@ -24,5 +29,6 @@ namespace DAL.Database
     
         public virtual doc_appoinment doc_appoinment { get; set; }
         public virtual user user { get; set; }
+        public virtual ICollection<prescription> prescriptions { get; set; }
     }
 }

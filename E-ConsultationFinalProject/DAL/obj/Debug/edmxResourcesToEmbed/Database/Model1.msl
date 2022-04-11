@@ -44,6 +44,7 @@
     <EntitySetMapping Name="doc_appoinment">
       <EntityTypeMapping TypeName="dpconsultationModel.doc_appoinment">
         <MappingFragment StoreEntitySet="doc_appoinment">
+          <ScalarProperty Name="isdeleted" ColumnName="isdeleted" />
           <ScalarProperty Name="schedule_id" ColumnName="schedule_id" />
           <ScalarProperty Name="app_status" ColumnName="app_status" />
           <ScalarProperty Name="app_fee" ColumnName="app_fee" />
@@ -54,6 +55,7 @@
     <EntitySetMapping Name="doctor_schedule">
       <EntityTypeMapping TypeName="dpconsultationModel.doctor_schedule">
         <MappingFragment StoreEntitySet="doctor_schedule">
+          <ScalarProperty Name="isdeleted" ColumnName="isdeleted" />
           <ScalarProperty Name="did" ColumnName="did" />
           <ScalarProperty Name="schedule_ending_time" ColumnName="schedule_ending_time" />
           <ScalarProperty Name="schedule_starting_time" ColumnName="schedule_starting_time" />
@@ -78,8 +80,8 @@
     <EntitySetMapping Name="prescriptions">
       <EntityTypeMapping TypeName="dpconsultationModel.prescription">
         <MappingFragment StoreEntitySet="prescription">
+          <ScalarProperty Name="p_id" ColumnName="p_id" />
           <ScalarProperty Name="u_id" ColumnName="u_id" />
-          <ScalarProperty Name="did" ColumnName="did" />
           <ScalarProperty Name="pres_advice" ColumnName="pres_advice" />
           <ScalarProperty Name="pres_test" ColumnName="pres_test" />
           <ScalarProperty Name="pres_medicine" ColumnName="pres_medicine" />

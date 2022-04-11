@@ -21,6 +21,14 @@ namespace ConsoleApi.Controllers
             }
             return Request.CreateResponse(HttpStatusCode.OK, "User Empty");
         }
+        [Route("api/Admin/SearchUser")]
+        [HttpPost]
+        public HttpResponseMessage SearchUser(userModel model)
+        {
+            var data = AllUserService.SearchUser(model);
+            return Request.CreateResponse(HttpStatusCode.OK, data);
+        }
+
         [Route("api/Admin/Add")]
         [HttpPost]
         public HttpResponseMessage Add(userModel u)
@@ -28,6 +36,15 @@ namespace ConsoleApi.Controllers
             AllUserService.Add(u);
             return Request.CreateResponse("User Successsfully Added");
         }
+
+        [Route("api/Admin/EditUser/{id}")]
+        [HttpPost]
+        public HttpResponseMessage EditUser(userModel u, int id)
+        {
+            AllUserService.EditUser(u, id);
+            return Request.CreateResponse("Successfuly User Information Edited");
+        }
+
         [Route("api/Admin/GetDoctor")]
         public HttpResponseMessage GetDoctor()
         {
@@ -35,9 +52,9 @@ namespace ConsoleApi.Controllers
             
             return Request.CreateResponse(HttpStatusCode.OK, data);
         }
-        [Route("api/Admin/EditDoctor/{id}")]
+        [Route("api/Admin/DoctorInfoEdit/{id}")]
         [HttpPost]
-        public HttpResponseMessage EditDoctor(DoctorInfoModel model,int id)
+        public HttpResponseMessage DoctorInfoEdit(DoctorInfoModel model,int id)
         {
             DoctorInfoService.Edit(model, id);
             return Request.CreateResponse(HttpStatusCode.OK);
@@ -54,12 +71,12 @@ namespace ConsoleApi.Controllers
             return Request.CreateResponse("User Empty");
         }
 
-        [Route("api/Admin/SearchUser")]
+        [Route("api/Admin/UStatusChange/{id}")]
         [HttpPost]
-        public HttpResponseMessage SearchUser(userModel model)
+        public HttpResponseMessage UStatusChange(userModel u, int id)
         {
-           var data =  AllUserService.SearchUser(model);
-            return Request.CreateResponse(HttpStatusCode.OK, data);
+            AllUserService.EditUserStatus(u, id);
+            return Request.CreateResponse("Successfuly Status Changed");
         }
 
         [Route("api/Admin/GetBanRequest")]
@@ -70,13 +87,8 @@ namespace ConsoleApi.Controllers
             return Request.CreateResponse(HttpStatusCode.OK, data);
         }
 
-        [Route("api/Admin/EditUser/{id}")]
-        [HttpPost]
-        public HttpResponseMessage EditUser(userModel u, int id)
-        {
-            AllUserService.EditUser(u, id);
-            return Request.CreateResponse("Successfuly Status Changed");
-        }
+       
+       
 
         [Route("api/Admin/DeleteUser/{id}")]
         [HttpPost]
@@ -86,13 +98,7 @@ namespace ConsoleApi.Controllers
             return Request.CreateResponse("Successfuly User Deleted");
         }
 
-        [Route("api/Admin/UStatusChange/{id}")]
-        [HttpPost]
-        public HttpResponseMessage UStatusChange(userModel u, int id)
-        {
-            AllUserService.EditUserStatus(u, id);
-            return Request.CreateResponse("Successfuly Status Changed");
-        }
+        
 
         [Route("api/Admin/CheckConsultation")]
         [HttpGet]

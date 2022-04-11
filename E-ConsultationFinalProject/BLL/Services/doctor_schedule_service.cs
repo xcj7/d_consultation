@@ -64,6 +64,7 @@ namespace BLL.Services
             {
                 data.Add(new DoctorSheduleModel()
                 {
+                    did = u.did,
                    schedule_id = u.schedule_id,
                     schedule_day = u.schedule_day,
                     schedule_starting_time = u.schedule_starting_time,

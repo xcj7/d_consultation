@@ -67,7 +67,7 @@
           <Property Name="pres_medicine" Type="varchar" MaxLength="500" />
           <Property Name="pres_test" Type="varchar" MaxLength="600" />
           <Property Name="pres_advice" Type="varchar" MaxLength="300" />
-          <Property Name="did" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="p_id" Type="int" Nullable="false" />
           <Property Name="u_id" Type="int" />
         </EntityType>
         <EntityType Name="user">
@@ -158,18 +158,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_prescribtion_doctor_info">
-          <End Role="doctor_info" Type="Self.doctor_info" Multiplicity="1" />
-          <End Role="prescription" Type="Self.prescription" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="doctor_info">
-              <PropertyRef Name="did" />
-            </Principal>
-            <Dependent Role="prescription">
-              <PropertyRef Name="did" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_prescribtion_user">
           <End Role="user" Type="Self.user" Multiplicity="0..1" />
           <End Role="prescription" Type="Self.prescription" Multiplicity="*" />
@@ -179,6 +167,18 @@
             </Principal>
             <Dependent Role="prescription">
               <PropertyRef Name="u_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_prescription_patient">
+          <End Role="patient" Type="Self.patient" Multiplicity="1" />
+          <End Role="prescription" Type="Self.prescription" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="patient">
+              <PropertyRef Name="p_id" />
+            </Principal>
+            <Dependent Role="prescription">
+              <PropertyRef Name="p_id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -214,12 +214,12 @@
             <End Role="user" EntitySet="user" />
             <End Role="patient" EntitySet="patient" />
           </AssociationSet>
-          <AssociationSet Name="FK_prescribtion_doctor_info" Association="Self.FK_prescribtion_doctor_info">
-            <End Role="doctor_info" EntitySet="doctor_info" />
-            <End Role="prescription" EntitySet="prescription" />
-          </AssociationSet>
           <AssociationSet Name="FK_prescribtion_user" Association="Self.FK_prescribtion_user">
             <End Role="user" EntitySet="user" />
+            <End Role="prescription" EntitySet="prescription" />
+          </AssociationSet>
+          <AssociationSet Name="FK_prescription_patient" Association="Self.FK_prescription_patient">
+            <End Role="patient" EntitySet="patient" />
             <End Role="prescription" EntitySet="prescription" />
           </AssociationSet>
         </EntityContainer>
@@ -249,7 +249,6 @@
           <Property Name="u_id" Type="Int32" />
           <NavigationProperty Name="user" Relationship="Self.FK_doctor_info_user" FromRole="doctor_info" ToRole="user" />
           <NavigationProperty Name="doctor_schedule" Relationship="dpconsultationModel.FK_doctor_schedule_doctor_info" FromRole="doctor_info" ToRole="doctor_schedule" />
-          <NavigationProperty Name="prescriptions" Relationship="dpconsultationModel.FK_prescribtion_doctor_info" FromRole="doctor_info" ToRole="prescription" />
           <Property Name="isdeleted" Type="Int32" />
         </EntityType>
         <EntityType Name="user">
@@ -328,12 +327,12 @@
             <End Role="patient" EntitySet="patients" />
           </AssociationSet>
           <EntitySet Name="prescriptions" EntityType="dpconsultationModel.prescription" />
-          <AssociationSet Name="FK_prescribtion_doctor_info" Association="dpconsultationModel.FK_prescribtion_doctor_info">
-            <End Role="doctor_info" EntitySet="doctor_info" />
-            <End Role="prescription" EntitySet="prescriptions" />
-          </AssociationSet>
           <AssociationSet Name="FK_prescribtion_user" Association="dpconsultationModel.FK_prescribtion_user">
             <End Role="user" EntitySet="users" />
+            <End Role="prescription" EntitySet="prescriptions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_prescription_patient" Association="dpconsultationModel.FK_prescription_patient">
+            <End Role="patient" EntitySet="patients" />
             <End Role="prescription" EntitySet="prescriptions" />
           </AssociationSet>
         </EntityContainer>
@@ -375,6 +374,7 @@
           <NavigationProperty Name="user" Relationship="dpconsultationModel.FK_Patient_user" FromRole="patient" ToRole="user" />
           <Property Name="isdeleted" Type="Int32" />
           <Property Name="status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="prescriptions" Relationship="dpconsultationModel.FK_prescription_patient" FromRole="patient" ToRole="prescription" />
         </EntityType>
         <Association Name="FK_doc_appoinment_doctor_schedule">
           <End Type="dpconsultationModel.doctor_schedule" Role="doctor_schedule" Multiplicity="1" />
@@ -432,23 +432,11 @@
           <Property Name="pres_medicine" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
           <Property Name="pres_test" Type="String" MaxLength="600" FixedLength="false" Unicode="false" />
           <Property Name="pres_advice" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
-          <Property Name="did" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="u_id" Type="Int32" />
-          <NavigationProperty Name="doctor_info" Relationship="dpconsultationModel.FK_prescribtion_doctor_info" FromRole="prescription" ToRole="doctor_info" />
           <NavigationProperty Name="user" Relationship="dpconsultationModel.FK_prescribtion_user" FromRole="prescription" ToRole="user" />
+          <Property Name="p_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="patient" Relationship="dpconsultationModel.FK_prescription_patient" FromRole="prescription" ToRole="patient" />
         </EntityType>
-        <Association Name="FK_prescribtion_doctor_info">
-          <End Type="dpconsultationModel.doctor_info" Role="doctor_info" Multiplicity="1" />
-          <End Type="dpconsultationModel.prescription" Role="prescription" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="doctor_info">
-              <PropertyRef Name="did" />
-            </Principal>
-            <Dependent Role="prescription">
-              <PropertyRef Name="did" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_prescribtion_user">
           <End Type="dpconsultationModel.user" Role="user" Multiplicity="0..1" />
           <End Type="dpconsultationModel.prescription" Role="prescription" Multiplicity="*" />
@@ -458,6 +446,18 @@
             </Principal>
             <Dependent Role="prescription">
               <PropertyRef Name="u_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_prescription_patient">
+          <End Type="dpconsultationModel.patient" Role="patient" Multiplicity="1" />
+          <End Type="dpconsultationModel.prescription" Role="prescription" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="patient">
+              <PropertyRef Name="p_id" />
+            </Principal>
+            <Dependent Role="prescription">
+              <PropertyRef Name="p_id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -546,8 +546,8 @@
           <EntitySetMapping Name="prescriptions">
             <EntityTypeMapping TypeName="dpconsultationModel.prescription">
               <MappingFragment StoreEntitySet="prescription">
+                <ScalarProperty Name="p_id" ColumnName="p_id" />
                 <ScalarProperty Name="u_id" ColumnName="u_id" />
-                <ScalarProperty Name="did" ColumnName="did" />
                 <ScalarProperty Name="pres_advice" ColumnName="pres_advice" />
                 <ScalarProperty Name="pres_test" ColumnName="pres_test" />
                 <ScalarProperty Name="pres_medicine" ColumnName="pres_medicine" />

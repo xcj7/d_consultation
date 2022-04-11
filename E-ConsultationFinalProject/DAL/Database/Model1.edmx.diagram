@@ -18,8 +18,8 @@
         <AssociationConnector Association="dpconsultationModel.FK_doctor_schedule_doctor_info" />
         <AssociationConnector Association="dpconsultationModel.FK_Patient_user" />
         <EntityTypeShape EntityType="dpconsultationModel.prescription" Width="1.5" PointX="5.25" PointY="0.75" />
-        <AssociationConnector Association="dpconsultationModel.FK_prescribtion_doctor_info" />
         <AssociationConnector Association="dpconsultationModel.FK_prescribtion_user" />
+        <AssociationConnector Association="dpconsultationModel.FK_prescription_patient" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
