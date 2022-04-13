@@ -223,68 +223,62 @@ namespace BLL.Services
 
 
 
-        public static List<ConsultationModel> SearchPatientperDay(Date_StatusModel ds)
+        public static List<PatientModel> SearchPatientperDay(Date_StatusModel ds,int id)
 
         {
             ConsultationModel obj;
             DoctorSheduleModel model;
 
             //  if (model.consultation_status == null) model.consultation_status = "";
-            var day = DataAccessFactory.DoctorSheduleDataAccess().Get().Where(x => x.schedule_day.ToString().Contains(ds.schedule_day.ToString())).ToList();
-
-            // var day = DataAccessFactory.DoctorSheduleDataAccess().Get().Where(x => x.schedule_day.ToString().Contains(ds.schedule_day)).ToList();
-            // var patients = DataAccessFactory.ConsultationDataAccess().Get().Where(x => x.schedule_day.ToString().Contains(model.schedule_day.ToString())).ToList();
-            var patients = DataAccessFactory.ConsultationDataAccess().Get().Where(x => x.status.Contains(ds.consultation_status)).ToList();
 
 
+            //var day = DataAccessFactory.DoctorSheduleDataAccess().Get().Where(x => x.schedule_day.ToString().Contains(ds.schedule_day.ToString())).ToList();
+            
+            //var patients = DataAccessFactory.ConsultationDataAccess().Get().Where(x => x.status.Contains(ds.consultation_status)).ToList();
 
-            List<ConsultationModel> data = new List<ConsultationModel>();
-            foreach (var u in patients)
+            var patient_shedule = DataAccessFactory.PatientDataAccess().Get().Where(x => x.doc_appoinment.doctor_schedule.schedule_day.ToString().Contains(ds.schedule_day.ToString())).ToList(); ;
+
+
+            //var user = DataAccessFactory.DoctorSheduleDataAccess().Get().Where(x => (x.u_status.Contains(model.u_status)) && x.u_category.Contains(model.u_category));
+
+
+            List<PatientModel> data = new List<PatientModel>();
+            foreach (var u in patient_shedule )
             {
-                data.Add(new ConsultationModel()
+                if(u.doc_appoinment.doctor_schedule.did.Equals(id) && u.status.Equals(ds.consultation_status))
                 {
-
-
-                    
-                                        p_id = u.p_id,
-                                        p_sickness_reason = u.p_sickness_reason,
-                                        p_diagnostics_info = u.p_diagnostics_info,
-                                        u_id = u.u_id,
-                                        app_id = u.app_id,
-                                        isdeleted = u.isdeleted,
-                                        consultation_status = u.status
-                    
-
-                    /*
-                    schedule_id = u.schedule_id,
-
-                    schedule_day = u.schedule_day,
-                    schedule_starting_time = u.schedule_starting_time,
-                    schedule_ending_time = u.schedule_ending_time,
-                    did = u.did,
-                    //   "doctor_info": null
-                    doctor_info = new DoctorInfoModel()
+                    data.Add(new PatientModel()
                     {
-                        did = u.doctor_info.did,
-                        d_degree = u.doctor_info.d_degree,
-                        d_govid = u.doctor_info.d_govid,
-                        d_speciality = u.doctor_info.d_speciality,
-                        user = new userModel()
-                        {
-                            u_name = u.doctor_info.user.u_name,
-                            u_username = u.doctor_info.user.u_username,
 
-                            u_address = u.doctor_info.user.u_address,
-                            u_email = u.doctor_info.user.u_email,
-                            u_phone = u.doctor_info.user.u_phone,
-                            u_nid = u.doctor_info.user.u_nid,
-                            u_category = u.doctor_info.user.u_category,
-                            u_status = u.doctor_info.user.u_status,
-                            isdeleted = u.doctor_info.user.isdeleted
-                        }
-                    }*/
 
-                });
+
+                        p_id = u.p_id,
+                        p_sickness_reason = u.p_sickness_reason,
+                        p_diagnostics_info = u.p_diagnostics_info,
+                        u_id = u.u_id,
+                        app_id = u.app_id,
+                        //   isdeleted = u.isdeleted,
+                        status = u.status,
+                         user = new userModel()
+                         {
+                             u_name = u.user.u_name,
+                             u_username = u.user.u_username,
+
+                             u_address = u.user.u_address,
+                             u_email = u.user.u_email,
+                             u_phone = u.user.u_phone,
+                             u_nid = u.user.u_nid,
+                             u_category = u.user.u_category,
+                             u_status = u.user.u_status,
+                             isdeleted = u.user.isdeleted
+                         }
+
+
+
+                    });
+
+                }
+               
             }
             return data;
         }

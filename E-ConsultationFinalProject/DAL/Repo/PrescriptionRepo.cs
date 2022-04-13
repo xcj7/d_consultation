@@ -15,10 +15,21 @@ namespace DAL.Repo
         {
             this.db = db;
         }
+    
+
         public bool Add(prescription obj)
         {
-            throw new NotImplementedException();
+            db.prescriptions.Add(obj);
+            if (db.SaveChanges() != 0)
+            {
+                return true;
+            }
+            return false;
+
         }
+
+
+
 
         public bool Delete(int id)
         {

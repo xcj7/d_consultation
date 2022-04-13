@@ -14,7 +14,8 @@ namespace BLL.Entity
         public Nullable<System.TimeSpan> schedule_ending_time { get; set; }
         public Nullable<int> did { get; set; }
 
-       
+      
+
         public virtual DoctorInfoModel doctor_info { get; set; }
     }
 }

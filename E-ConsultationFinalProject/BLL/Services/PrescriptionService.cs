@@ -1,5 +1,6 @@
 ﻿using BLL.Entity;
 using DAL;
+using DAL.Database;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,13 +15,16 @@ namespace BLL.Services
         {
             var data = DataAccessFactory.PrescriptionDataAccess().Get().Where(x => x.user.u_id == id);
             List<PrescriptionModel> p = new List<PrescriptionModel>();
-            foreach(var v in data)
+            foreach (var v in data)
             {
                 p.Add(new PrescriptionModel()
                 {
+                    pres_id=v.pres_id,
                     pres_medicine = v.pres_medicine,
                     pres_test = v.pres_test,
                     pres_advice = v.pres_advice,
+                    u_id=v.u_id,
+                    p_id=v.p_id,
                     patient = new PatientModel()
                     {
                         p_sickness_reason = v.patient.p_sickness_reason,
@@ -35,6 +39,7 @@ namespace BLL.Services
                                 schedule_ending_time = v.patient.doc_appoinment.doctor_schedule.schedule_ending_time,
                                 doctor_info = new DoctorInfoModel()
                                 {
+                                    did=v.patient.doc_appoinment.doctor_schedule.doctor_info.did,
                                     d_degree = v.patient.doc_appoinment.doctor_schedule.doctor_info.d_degree,
                                     d_speciality = v.patient.doc_appoinment.doctor_schedule.doctor_info.d_speciality,
                                     user = new userModel()
@@ -50,5 +55,28 @@ namespace BLL.Services
             }
             return p;
         }
+
+
+        public static void write_prescription(PrescriptionModel p,int id)
+        {
+           prescription data = new prescription()
+            {
+                pres_medicine = p.pres_medicine,
+                pres_test = p.pres_test,
+                pres_advice = p.pres_advice,
+
+                p_id = id,
+                u_id = p.u_id
+
+            };
+            DataAccessFactory.PrescriptionDataAccess().Add(data);
+        }
     }
+
+
+   
+
+
+
+
 }

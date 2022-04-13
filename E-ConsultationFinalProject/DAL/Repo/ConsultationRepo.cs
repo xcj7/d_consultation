@@ -69,14 +69,14 @@ namespace DAL.Repo
         public bool EditStatus(patient obj)
         {
 
-            var p = db.patients.FirstOrDefault(x => x.p_id == obj.p_id);
+           // var p = db.patients.Where(x => x.p_id.Equals(obj.p_id)).FirstOrDefault();
        
 
            
+           
+
+            var p = db.patients.FirstOrDefault(x => x.p_id == obj.p_id);
             p.status = obj.status;
-
-
-
             if (db.SaveChanges() != 0)
             {
                 return true;

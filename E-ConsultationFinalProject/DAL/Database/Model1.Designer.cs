@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'C:\Users\IMON\Desktop\.net Final Project\d_consultation\E-ConsultationFinalProject\DAL\Database\Model1.edmx'. 
+﻿// T4 code generation is enabled for model 'C:\Users\User\source\repos\git\E-ConsultationFinalProject\DAL\Database\Model1.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

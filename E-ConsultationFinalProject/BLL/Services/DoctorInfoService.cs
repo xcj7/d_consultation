@@ -51,7 +51,7 @@ namespace BLL.Services
                 d_govid = u.d_govid,
                 d_degree = u.d_degree,
                 d_speciality = u.d_speciality,
-
+                u_id=u.u_id,
                 did = id
 
             };

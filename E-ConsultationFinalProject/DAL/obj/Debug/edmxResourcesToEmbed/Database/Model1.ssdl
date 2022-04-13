@@ -17,7 +17,7 @@
     <Property Name="app_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="app_fee" Type="int" />
     <Property Name="app_status" Type="varchar" MaxLength="50" />
-    <Property Name="schedule_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="schedule_id" Type="int" Nullable="false" />
     <Property Name="isdeleted" Type="int" />
   </EntityType>
   <EntityType Name="doctor_info">

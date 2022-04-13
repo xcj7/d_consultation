@@ -11,16 +11,20 @@ namespace ConsoleApi.Controllers
 {
     public class DoctorController : ApiController
     {
+        //ok  shows all doctors of the system
         [Route("api/Doctor/Get")]
         public HttpResponseMessage Get()
         {
-            var data = AllUserService.Get();
+            var data = AllUserService.Get().Where(x=>x.u_category=="Doctor");
             if (data != null)
             {
                 return Request.CreateResponse(HttpStatusCode.OK, data);
             }
             return Request.CreateResponse(HttpStatusCode.OK, "User Empty");
         }
+
+        //ok  user add to the system
+
         [Route("api/Doctor/Add")]
         [HttpPost]
         public HttpResponseMessage Add(userModel u)
@@ -28,6 +32,10 @@ namespace ConsoleApi.Controllers
             AllUserService.Add(u);
             return Request.CreateResponse("User Successsfully Added");
         }
+
+
+        //ok  shows all doctors of the system
+
         [Route("api/Doctor/GetDoctor")]
         public HttpResponseMessage GetDoctor()
         {
@@ -42,11 +50,12 @@ namespace ConsoleApi.Controllers
 
 
      //ok
+
         [Route("api/Doctor/EditDoctor/{id}")]
         [HttpPost]
-        public HttpResponseMessage EditDoctor(ConsultationModel model, int id)
+        public HttpResponseMessage EditDoctor(DoctorInfoModel model, int id)
         {
-           ConsultationService.Edit(model, id);
+           DoctorInfoService.Edit(model, id);
             return Request.CreateResponse(HttpStatusCode.OK);
         }
 
@@ -85,14 +94,39 @@ namespace ConsoleApi.Controllers
             return Request.CreateResponse(HttpStatusCode.OK, data);
         }
 
+        //ok
         //search patient per day
-        [Route("api/Doctor/SearchPatientperDay")]
+        [Route("api/Doctor/SearchPatientperDay/{id}")]
         [HttpPost]
-        public HttpResponseMessage SearchPatientperDay(Date_StatusModel obj)
+        public HttpResponseMessage SearchPatientperDay(Date_StatusModel obj,int id)
         {
-            var data = ConsultationService.SearchPatientperDay(obj);
+            var data = ConsultationService.SearchPatientperDay(obj,id);
             return Request.CreateResponse(HttpStatusCode.OK, data);
         }
+
+
+
+
+
+        //write prescriptions
+
+        [Route("api/Doctor/write_prescription/{id}")]
+        [HttpPost]
+        public HttpResponseMessage write_prescription(PrescriptionModel prescription,int id)
+        {
+           
+
+
+
+
+            PrescriptionService.write_prescription(prescription,id);
+            return Request.CreateResponse("presctiption added  Successsfully Added");
+
+
+        }
+
+
+
 
 
 

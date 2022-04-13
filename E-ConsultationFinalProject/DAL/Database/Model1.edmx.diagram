@@ -4,22 +4,22 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="9525ff78c73b4854abb24951b38d68a6" Name="Diagram1" ZoomLevel="84">
-        <EntityTypeShape EntityType="dpconsultationModel.ban" Width="1.5" PointX="3" PointY="1.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="dpconsultationModel.doctor_info" Width="1.5" PointX="3" PointY="4" IsExpanded="true" />
-        <EntityTypeShape EntityType="dpconsultationModel.user" Width="1.5" PointX="0.75" PointY="2" IsExpanded="true" />
+      <Diagram DiagramId="83d4bbb6e87f40cbb0205cb9abb01818" Name="Diagram1">
+        <EntityTypeShape EntityType="dpconsultationModel.ban" Width="1.5" PointX="3" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="dpconsultationModel.doc_appoinment" Width="1.5" PointX="7.5" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="dpconsultationModel.doctor_info" Width="1.5" PointX="3" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="dpconsultationModel.doctor_schedule" Width="1.5" PointX="5.25" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="dpconsultationModel.patient" Width="1.5" PointX="9.75" PointY="2.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="dpconsultationModel.prescription" Width="1.5" PointX="12" PointY="2.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dpconsultationModel.user" Width="1.5" PointX="0.75" PointY="2.125" IsExpanded="true" />
         <AssociationConnector Association="dpconsultationModel.FK_ban_ban" ManuallyRouted="false" />
+        <AssociationConnector Association="dpconsultationModel.FK_doc_appoinment_doctor_schedule" ManuallyRouted="false" />
+        <AssociationConnector Association="dpconsultationModel.FK_Patient_doc_appoinment" ManuallyRouted="false" />
         <AssociationConnector Association="dpconsultationModel.FK_doctor_info_user" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="dpconsultationModel.doc_appoinment" Width="1.5" PointX="7.5" PointY="4.125" />
-        <EntityTypeShape EntityType="dpconsultationModel.doctor_schedule" Width="1.5" PointX="5.25" PointY="4" />
-        <EntityTypeShape EntityType="dpconsultationModel.patient" Width="1.5" PointX="9.75" PointY="3" />
-        <AssociationConnector Association="dpconsultationModel.FK_doc_appoinment_doctor_schedule" />
-        <AssociationConnector Association="dpconsultationModel.FK_Patient_doc_appoinment" />
-        <AssociationConnector Association="dpconsultationModel.FK_doctor_schedule_doctor_info" />
-        <AssociationConnector Association="dpconsultationModel.FK_Patient_user" />
-        <EntityTypeShape EntityType="dpconsultationModel.prescription" Width="1.5" PointX="5.25" PointY="0.75" />
-        <AssociationConnector Association="dpconsultationModel.FK_prescribtion_user" />
-        <AssociationConnector Association="dpconsultationModel.FK_prescription_patient" />
+        <AssociationConnector Association="dpconsultationModel.FK_doctor_schedule_doctor_info" ManuallyRouted="false" />
+        <AssociationConnector Association="dpconsultationModel.FK_Patient_user" ManuallyRouted="false" />
+        <AssociationConnector Association="dpconsultationModel.FK_prescription_patient" ManuallyRouted="false" />
+        <AssociationConnector Association="dpconsultationModel.FK_prescribtion_user" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

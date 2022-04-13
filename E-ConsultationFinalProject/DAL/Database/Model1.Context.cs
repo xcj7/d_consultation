@@ -26,11 +26,11 @@ namespace DAL.Database
         }
     
         public DbSet<ban> bans { get; set; }
-        public DbSet<doctor_info> doctor_info { get; set; }
-        public DbSet<user> users { get; set; }
         public DbSet<doc_appoinment> doc_appoinment { get; set; }
+        public DbSet<doctor_info> doctor_info { get; set; }
         public DbSet<doctor_schedule> doctor_schedule { get; set; }
         public DbSet<patient> patients { get; set; }
         public DbSet<prescription> prescriptions { get; set; }
+        public DbSet<user> users { get; set; }
     }
 }

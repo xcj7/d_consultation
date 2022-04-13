@@ -35,6 +35,7 @@ namespace DAL.Repo
 
             if (db.SaveChanges() != 0)
             {
+                this.EditStatus(d);
                 return true;
             }
             return false;
@@ -47,7 +48,17 @@ namespace DAL.Repo
 
         public bool EditStatus(doctor_info obj)
         {
-            throw new NotImplementedException();
+            var d = db.users.FirstOrDefault(x => x.u_id == obj.u_id);
+            d.u_status = "Requested";
+
+            if (db.SaveChanges() != 0)
+            {
+               
+                return true;
+            }
+
+
+            return false;
         }
 
         public doctor_info Get(int id)
