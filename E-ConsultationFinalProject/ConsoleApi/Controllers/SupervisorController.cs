@@ -49,6 +49,13 @@ namespace ConsoleApi.Controllers
             doctor_schedule_service.DeleteSchedule(id);
             return Request.CreateResponse("Successfuly User Deleted");
         }
+        [Route("api/Supervisor/CheckConsultation")]
+        [HttpGet]
+        public HttpResponseMessage CheckConsultation()
+        {
+            var data = PatientService.Get();
+            return Request.CreateResponse(HttpStatusCode.OK, data);
+        }
 
         [Route("api/Supervisor/Addban")]
         [HttpPost]
