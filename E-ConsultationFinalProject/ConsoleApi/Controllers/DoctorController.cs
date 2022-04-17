@@ -129,6 +129,23 @@ namespace ConsoleApi.Controllers
 
 
 
+        [Route("api/Doctor/prescription_history/{id}")]
+        [HttpGet]
+        public HttpResponseMessage prescription_history(int id)
+        {
+
+
+
+
+
+            var data = PrescriptionService.prescription_history(id);
+            return Request.CreateResponse(data);
+
+
+        }
+
+
+
 
 
 
