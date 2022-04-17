@@ -65,6 +65,16 @@
     <Property Name="p_id" Type="int" Nullable="false" />
     <Property Name="u_id" Type="int" />
   </EntityType>
+  <EntityType Name="Token">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="u_id" Type="int" />
+    <Property Name="accesstoken" Type="varchar" MaxLength="200" />
+    <Property Name="createdat" Type="datetime" />
+    <Property Name="expireat" Type="varchar" MaxLength="200" />
+  </EntityType>
   <EntityType Name="user">
     <Key>
       <PropertyRef Name="u_id" />
@@ -177,6 +187,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_Token_user">
+    <End Role="user" Type="Self.user" Multiplicity="0..1" />
+    <End Role="Token" Type="Self.Token" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="user">
+        <PropertyRef Name="u_id" />
+      </Principal>
+      <Dependent Role="Token">
+        <PropertyRef Name="u_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <EntityContainer Name="dpconsultationModelStoreContainer">
     <EntitySet Name="ban" EntityType="Self.ban" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="doc_appoinment" EntityType="Self.doc_appoinment" Schema="dbo" store:Type="Tables" />
@@ -184,6 +206,7 @@
     <EntitySet Name="doctor_schedule" EntityType="Self.doctor_schedule" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="patient" EntityType="Self.patient" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="prescription" EntityType="Self.prescription" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Token" EntityType="Self.Token" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="user" EntityType="Self.user" Schema="dbo" store:Type="Tables" />
     <AssociationSet Name="FK_ban_ban" Association="Self.FK_ban_ban">
       <End Role="user" EntitySet="user" />
@@ -216,6 +239,10 @@
     <AssociationSet Name="FK_prescription_patient" Association="Self.FK_prescription_patient">
       <End Role="patient" EntitySet="patient" />
       <End Role="prescription" EntitySet="prescription" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Token_user" Association="Self.FK_Token_user">
+      <End Role="user" EntitySet="user" />
+      <End Role="Token" EntitySet="Token" />
     </AssociationSet>
   </EntityContainer>
 </Schema>

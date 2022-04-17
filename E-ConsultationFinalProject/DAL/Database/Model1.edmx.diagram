@@ -20,6 +20,8 @@
         <EntityTypeShape EntityType="dpconsultationModel.prescription" Width="1.5" PointX="5.25" PointY="0.75" />
         <AssociationConnector Association="dpconsultationModel.FK_prescribtion_user" />
         <AssociationConnector Association="dpconsultationModel.FK_prescription_patient" />
+        <EntityTypeShape EntityType="dpconsultationModel.Token" Width="1.5" PointX="3" PointY="8" />
+        <AssociationConnector Association="dpconsultationModel.FK_Token_user" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

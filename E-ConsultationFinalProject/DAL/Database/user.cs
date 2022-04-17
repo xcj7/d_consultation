@@ -20,6 +20,7 @@ namespace DAL.Database
             this.doctor_info = new HashSet<doctor_info>();
             this.patients = new HashSet<patient>();
             this.prescriptions = new HashSet<prescription>();
+            this.Tokens = new HashSet<Token>();
         }
     
         public int u_id { get; set; }
@@ -38,5 +39,6 @@ namespace DAL.Database
         public virtual ICollection<doctor_info> doctor_info { get; set; }
         public virtual ICollection<patient> patients { get; set; }
         public virtual ICollection<prescription> prescriptions { get; set; }
+        public virtual ICollection<Token> Tokens { get; set; }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using BLL.Entity;
 using BLL.Services;
+using ConsoleApi.Auth;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +10,7 @@ using System.Web.Http;
 
 namespace ConsoleApi.Controllers
 {
+    [SupervisorAccess]
     public class SupervisorController : ApiController
     {
         [Route("api/Supervisor/GetSchedule")]

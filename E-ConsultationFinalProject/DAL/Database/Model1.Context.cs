@@ -32,5 +32,6 @@ namespace DAL.Database
         public DbSet<doctor_schedule> doctor_schedule { get; set; }
         public DbSet<patient> patients { get; set; }
         public DbSet<prescription> prescriptions { get; set; }
+        public DbSet<Token> Tokens { get; set; }
     }
 }

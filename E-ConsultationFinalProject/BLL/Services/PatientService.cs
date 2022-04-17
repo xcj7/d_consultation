@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 
 namespace BLL.Services
 {
+
     public class PatientService
     {
         public static List<PatientModel> Get()

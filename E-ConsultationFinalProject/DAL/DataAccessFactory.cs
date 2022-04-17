@@ -43,5 +43,13 @@ namespace DAL
         {
             return new ConsultationRepo(db);
         }
+        public static IAuth<Token> AuthDataAccess()
+        {
+            return new TokenRepo(db);
+        }
+        public static IRepository<Token,string> TokenDataAccess()
+        {
+            return new TokenRepo(db);
+        }
     }
 }

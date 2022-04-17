@@ -1,5 +1,6 @@
 ﻿using BLL.Entity;
 using BLL.Services;
+using ConsoleApi.Auth;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +10,7 @@ using System.Web.Http;
 
 namespace ConsoleApi.Controllers
 {
+    [PatientAccess]
     public class PatientController : ApiController
     {
         [Route("api/Patient/GetDoctor")]
